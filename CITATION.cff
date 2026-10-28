@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the article and the archived release."
+title: "Analysis code for: Amygdala subregion atrophy in Parkinson's disease is associated with visual hallucinations and cognitive impairment"
+type: software
+license: MIT
+repository-code: "https://github.com/akonuri/amygdala-subregions-pd"
+authors:
+  - family-names: Konuri
+    given-names: Ajay
+  - family-names: Anderson
+    given-names: Jack
+  - family-names: Churchill
+    given-names: Lachlan
+  - family-names: Ignatavicius
+    given-names: Anna
+  - family-names: Halliday
+    given-names: Glenda M
+  - family-names: Lewis
+    given-names: Simon JG
+  - family-names: Landin-Romero
+    given-names: Ramon
+  - family-names: Matar
+    given-names: Elie

@@ -1,0 +1,12 @@
+data/*
+!data/README.md
+*.csv
+*.xlsx
+*.png
+*.nii
+*.nii.gz
+*.mgz
+analysis_log.txt
+__pycache__/
+.venv/
+.DS_Store

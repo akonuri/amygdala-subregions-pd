@@ -1,0 +1,18 @@
+{
+  "title": "Analysis code for: Amygdala subregion atrophy in Parkinson's disease is associated with visual hallucinations and cognitive impairment",
+  "upload_type": "software",
+  "description": "Python analysis code reproducing the statistical results, tables and figures of the manuscript, using harmonised FreeSurfer amygdala nucleus volumes and clinical data from the Parkinson's Progression Markers Initiative. This research was funded in whole or in part by Aligning Science Across Parkinson's (027449) through the Michael J. Fox Foundation for Parkinson's Research (MJFF).",
+  "creators": [
+    {"name": "Konuri, Ajay", "affiliation": "University of Sydney"},
+    {"name": "Anderson, Jack", "affiliation": "University of Sydney"},
+    {"name": "Churchill, Lachlan", "affiliation": "University of Sydney"},
+    {"name": "Ignatavicius, Anna", "affiliation": "University of Sydney"},
+    {"name": "Halliday, Glenda M", "affiliation": "University of Sydney"},
+    {"name": "Lewis, Simon JG", "affiliation": "Macquarie University"},
+    {"name": "Landin-Romero, Ramon", "affiliation": "University of Sydney"},
+    {"name": "Matar, Elie", "affiliation": "University of Sydney"}
+  ],
+  "license": "MIT",
+  "keywords": ["Parkinson's disease", "amygdala", "MRI", "visual hallucinations", "cognitive impairment", "PPMI"],
+  "communities": [{"identifier": "asaphub"}]
+}
