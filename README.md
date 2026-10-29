@@ -60,7 +60,7 @@ The analysis expects the following files in one folder.
 | `PPMI_mega_clinical.csv` | Merged PPMI clinical and neuropsychological data per participant and visit |
 | `PPMI_Clinical_13Apr2026/` | PPMI study data download (MDS-UPDRS Part III, Benton Judgement of Line Orientation, socio-economics, PD diagnosis history) |
 
-Amygdala nuclei were segmented with FreeSurfer `recon-all` and `segmentHA_T1.sh`.
+Amygdala nuclei were segmented with FreeSurfer 7.3.2 (`recon-all` and `segmentHA_T1.sh`).
 
 Group-level source data for all figures and tables are available on Zenodo (https://doi.org/10.5281/zenodo.[DATA_RECORD]). Build that record from a full run with `bash zenodo/make_data_record.sh` (see `zenodo/ZENODO_GUIDE.md`).
 
