@@ -1,0 +1,8 @@
+Resource Type,Resource Name,Source,Identifier
+Dataset,"Parkinson's Progression Markers Initiative (PPMI) clinical and T1-weighted MRI data (controlled access under the PPMI Data Use Agreement)",PPMI,https://www.ppmi-info.org/ (RRID:SCR_006431)
+Dataset,"De-identified derived data (group-level summary statistics for whole amygdala, subregion and nucleus volumes; mixed-effects, survival and subtype results; source data for Figures 1 to 3); includes data dictionary",Zenodo,https://doi.org/10.5281/zenodo.[DATA_RECORD]
+Code,"Analysis scripts (quality control and covariate adjustment; cross-sectional, longitudinal mixed-effects and survival analyses; figure generation); includes README",Zenodo and GitHub,https://doi.org/10.5281/zenodo.[CODE_RECORD]; https://github.com/akonuri/amygdala-subregions-pd
+Software,"FreeSurfer v[7.x.x] (recon-all and hippocampal and amygdala nuclei segmentation)",Athinoula A. Martinos Center for Biomedical Imaging,http://surfer.nmr.mgh.harvard.edu/
+Software,longCombat v1.0,Beer et al. 2020,https://doi.org/10.1016/j.neuroimage.2020.117129
+Software,R v[4.x.x],R Foundation for Statistical Computing,https://www.r-project.org/
+Software,Python v[3.x],Python Software Foundation,https://www.python.org/

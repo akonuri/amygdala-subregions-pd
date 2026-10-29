@@ -21,3 +21,10 @@ authors:
     given-names: Ramon
   - family-names: Matar
     given-names: Elie
+version: "1.0.0"
+keywords:
+  - "Parkinson's disease"
+  - amygdala
+  - MRI
+  - PPMI
+  - "Aligning Science Across Parkinson's"

@@ -23,7 +23,10 @@ The code takes harmonised FreeSurfer amygdala nucleus volumes and clinical data 
 | `analysis/10_random_slope_sensitivity.py` | Random-slope sensitivity models |
 | `analysis/11_clinical_subtypes.py` | Clinical subtype comparisons (Results, Table 2) |
 | `analysis/12_export_workbook.py` | All result tables in one Excel workbook |
+| `analysis/13_export_figure_source_data.py` | Group-level source data for Figures 1 to 3 (Zenodo data record) |
 | `run_analysis.py` | Runs the steps in order |
+| `KeyResourcesTable.csv` | ASAP Key Resources Table |
+| `zenodo/` | Kit for building the Zenodo data record |
 
 The steps share variables and must be run through `run_analysis.py`.
 
@@ -59,7 +62,9 @@ The analysis expects the following files in one folder.
 
 Amygdala nuclei were segmented with FreeSurfer `recon-all` and `segmentHA_T1.sh`.
 
-Group-level source data for all figures and tables are available on Zenodo at [DATA DOI].
+Group-level source data for all figures and tables are available on Zenodo (https://doi.org/10.5281/zenodo.[DATA_RECORD]). Build that record from a full run with `bash zenodo/make_data_record.sh` (see `zenodo/ZENODO_GUIDE.md`).
+
+**Upstream steps not in this repository.** [Add or link the FreeSurfer `recon-all`/`segmentHA_T1.sh` batch script, the longCombat R script and the clinical subtype classification script that produce `harmonised_with_corrected_subtypes.csv`.]
 
 ## Usage
 
@@ -69,7 +74,7 @@ export AMYG_PD_OUTPUT_DIR=/path/to/output/folder   # optional, defaults to a sub
 python run_analysis.py 2>&1 | tee analysis_log.txt
 ```
 
-The log reports every statistic in the manuscript. Result tables are written as CSV and Excel files, figures to `publication_plots/`, and all tables are combined in `AMYGDALA_PD_MANUSCRIPT.xlsx`.
+The log reports every statistic in the manuscript. Result tables are written as CSV and Excel files, figures to `publication_plots/`, figure source data to `figure_source_data/`, and all tables are combined in `AMYGDALA_PD_MANUSCRIPT.xlsx`.
 
 ## Methods summary
 
@@ -85,7 +90,7 @@ MIT. See `LICENSE`.
 
 ## Acknowledgements
 
-This research was funded in whole or in part by Aligning Science Across Parkinson's (027449) through the Michael J. Fox Foundation for Parkinson's Research (MJFF). Data used in the preparation of this work were obtained from the Parkinson's Progression Markers Initiative (PPMI) database. PPMI is a public-private partnership funded by the Michael J. Fox Foundation for Parkinson's Research and funding partners.
+This research was funded in whole or in part by Aligning Science Across Parkinson's (ASAP) (https://ror.org/03zj4c476) [grant number ASAP-027449] through the Michael J. Fox Foundation for Parkinson's Research (MJFF) (https://ror.org/03arq3225). For the purpose of open access, the authors have applied a CC BY 4.0 public copyright license to all Author Accepted Manuscripts arising from this submission. Data used in the preparation of this work were obtained from the Parkinson's Progression Markers Initiative (PPMI) database. PPMI is a public-private partnership funded by the Michael J. Fox Foundation for Parkinson's Research and funding partners.
 
 ## Contact
 

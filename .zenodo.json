@@ -1,18 +1,57 @@
 {
   "title": "Analysis code for: Amygdala subregion atrophy in Parkinson's disease is associated with visual hallucinations and cognitive impairment",
   "upload_type": "software",
-  "description": "Python analysis code reproducing the statistical results, tables and figures of the manuscript, using harmonised FreeSurfer amygdala nucleus volumes and clinical data from the Parkinson's Progression Markers Initiative. This research was funded in whole or in part by Aligning Science Across Parkinson's (027449) through the Michael J. Fox Foundation for Parkinson's Research (MJFF).",
+  "description": "Python analysis code reproducing the statistical results, tables and figures of the manuscript, using harmonised FreeSurfer amygdala nucleus volumes and clinical data from the Parkinson's Progression Markers Initiative (PPMI, RRID:SCR_006431). No participant data are included. This research was funded in whole or in part by Aligning Science Across Parkinson's (ASAP-027449) through the Michael J. Fox Foundation for Parkinson's Research (MJFF). For the purpose of open access, the authors have applied a CC BY 4.0 public copyright license to all Author Accepted Manuscripts arising from this submission.",
   "creators": [
-    {"name": "Konuri, Ajay", "affiliation": "University of Sydney"},
-    {"name": "Anderson, Jack", "affiliation": "University of Sydney"},
-    {"name": "Churchill, Lachlan", "affiliation": "University of Sydney"},
-    {"name": "Ignatavicius, Anna", "affiliation": "University of Sydney"},
-    {"name": "Halliday, Glenda M", "affiliation": "University of Sydney"},
-    {"name": "Lewis, Simon JG", "affiliation": "Macquarie University"},
-    {"name": "Landin-Romero, Ramon", "affiliation": "University of Sydney"},
-    {"name": "Matar, Elie", "affiliation": "University of Sydney"}
+    {
+      "name": "Konuri, Ajay",
+      "affiliation": "Brain and Mind Centre, University of Sydney"
+    },
+    {
+      "name": "Anderson, Jack",
+      "affiliation": "Brain and Mind Centre, University of Sydney"
+    },
+    {
+      "name": "Churchill, Lachlan",
+      "affiliation": "Brain and Mind Centre, University of Sydney"
+    },
+    {
+      "name": "Ignatavicius, Anna",
+      "affiliation": "Brain and Mind Centre, University of Sydney"
+    },
+    {
+      "name": "Halliday, Glenda M",
+      "affiliation": "Brain and Mind Centre, University of Sydney"
+    },
+    {
+      "name": "Lewis, Simon JG",
+      "affiliation": "Macquarie University Brain Institute and Clinic"
+    },
+    {
+      "name": "Landin-Romero, Ramon",
+      "affiliation": "Brain and Mind Centre, University of Sydney"
+    },
+    {
+      "name": "Matar, Elie",
+      "affiliation": "Brain and Mind Centre, University of Sydney"
+    }
   ],
   "license": "MIT",
-  "keywords": ["Parkinson's disease", "amygdala", "MRI", "visual hallucinations", "cognitive impairment", "PPMI"],
-  "communities": [{"identifier": "asaphub"}]
+  "keywords": [
+    "Parkinson's disease",
+    "amygdala",
+    "MRI",
+    "visual hallucinations",
+    "cognitive impairment",
+    "PPMI",
+    "Aligning Science Across Parkinson's",
+    "ASAP"
+  ],
+  "communities": [
+    {
+      "identifier": "asaphub"
+    }
+  ],
+  "version": "1.0.0",
+  "notes": "Funding: Aligning Science Across Parkinson's ASAP-027449 (https://ror.org/03zj4c476) through the Michael J. Fox Foundation for Parkinson's Research (https://ror.org/03arq3225)."
 }
