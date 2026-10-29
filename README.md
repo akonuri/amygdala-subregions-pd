@@ -32,7 +32,7 @@ The steps share variables and must be run through `run_analysis.py`.
 
 ## Requirements
 
-- Python 3.12 or later (tested with 3.14)
+- Python 3.12 or later (tested with 3.14.7)
 - Packages in `requirements.txt` (pandas, NumPy, SciPy, statsmodels, lifelines, scikit-learn, scikit-posthocs, matplotlib, openpyxl)
 - Runs on macOS and Linux. A full run takes a few minutes on a standard laptop.
 
