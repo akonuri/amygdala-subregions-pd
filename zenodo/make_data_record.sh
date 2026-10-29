@@ -78,4 +78,4 @@ if blocked:
     print('BLOCKED (identifier-like columns, not copied):')
     for f, b in blocked: print(f'  {f}: {b}')
 PY
-echo "Next: fill blank descriptions in data_dictionary.csv and the [placeholders] in README.md, then zip and upload (see zenodo/ZENODO_GUIDE.md)."
+echo "Done. Add descriptions for any blank entries in data_dictionary.csv before uploading to Zenodo."

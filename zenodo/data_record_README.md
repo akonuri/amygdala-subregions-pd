@@ -1,9 +1,9 @@
 # Source data: Amygdala subregion atrophy in Parkinson's disease is associated with visual hallucinations and cognitive impairment
 
 **Authors** Ajay Konuri, Jack Anderson, Lachlan Churchill, Anna Ignatavicius, Glenda M Halliday, Simon JG Lewis, Ramon Landin-Romero, Elie Matar
-**Contact** Ajay Konuri, Brain and Mind Centre, University of Sydney ([email])
+**Contact** Elie Matar, Brain and Mind Centre, University of Sydney (elie.matar@sydney.edu.au)
 **Version** 1.0.0 · **Licence** CC BY 4.0
-**Code** https://doi.org/10.5281/zenodo.[CODE_RECORD] · **Preprint** [medRxiv DOI] · **Article** [journal DOI]
+**Code** https://github.com/akonuri/amygdala-subregions-pd
 
 ## Description
 Group-level results behind every table and figure in the article. The study examined whole amygdala, subregion (sCLR, CMA, BLA) and nucleus volumes in 468 participants with Parkinson's disease and 165 healthy controls from the Parkinson's Progression Markers Initiative (PPMI), and their associations with early and incident visual hallucinations, cognitive impairment and clinical subtypes.

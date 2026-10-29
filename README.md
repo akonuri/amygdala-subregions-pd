@@ -26,7 +26,7 @@ The code takes harmonised FreeSurfer amygdala nucleus volumes and clinical data 
 | `analysis/13_export_figure_source_data.py` | Group-level source data for Figures 1 to 3 (Zenodo data record) |
 | `run_analysis.py` | Runs the steps in order |
 | `KeyResourcesTable.csv` | ASAP Key Resources Table |
-| `zenodo/` | Kit for building the Zenodo data record |
+| `zenodo/` | Builds the Zenodo source data deposit from a full run |
 
 The steps share variables and must be run through `run_analysis.py`.
 
@@ -62,9 +62,9 @@ The analysis expects the following files in one folder.
 
 Amygdala nuclei were segmented with FreeSurfer 7.3.2 (`recon-all` and `segmentHA_T1.sh`).
 
-Group-level source data for all figures and tables are available on Zenodo (https://doi.org/10.5281/zenodo.[DATA_RECORD]). Build that record from a full run with `bash zenodo/make_data_record.sh` (see `zenodo/ZENODO_GUIDE.md`).
+Group-level source data for all figures and tables are deposited on Zenodo in the Aligning Science Across Parkinson's community. The deposit is built from a full run with `bash zenodo/make_data_record.sh`.
 
-**Upstream steps not in this repository.** [Add or link the FreeSurfer `recon-all`/`segmentHA_T1.sh` batch script, the longCombat R script and the clinical subtype classification script that produce `harmonised_with_corrected_subtypes.csv`.]
+**Upstream processing.** The input file `harmonised_with_corrected_subtypes.csv` was produced with FreeSurfer 7.3.2 (`recon-all` and `segmentHA_T1.sh`), longCombat harmonisation in R 4.6.1 with scanner manufacturer as batch, and baseline clinical subtype classification, as described in the manuscript Methods. Scripts for these steps are available from the corresponding author.
 
 ## Usage
 
@@ -82,7 +82,7 @@ Cross-sectional outliers were identified at the first MRI using Mahalanobis dist
 
 ## Citation
 
-If you use this code, please cite the article above and the archived software release (Zenodo DOI [CODE DOI]).
+If you use this code, please cite the article above and the Zenodo archive of this release.
 
 ## Licence
 
