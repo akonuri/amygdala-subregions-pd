@@ -23,7 +23,7 @@ TABLES = ['participant_flow.csv','followup_duration_summary.csv','qc_outlier_gro
  'CI_9D_sectors.csv','CI_9D_nuclei.csv','CI_9E_within_group_slopes.csv','CI_9H_demographics.csv',
  'CI_9G_survival.csv','CI_9G_cohort_flow.csv',
  'VHge2_9D_sectors.csv','VHge2_9D_nuclei.csv','VHge2_9G_survival.csv','VHge2_9G_cohort_flow.csv',
- 'Step9J_random_slope_sensitivity.csv']
+ 'Step9J_random_slope_sensitivity.csv','survival_age_sex_adjusted.csv']
 ID = re.compile(r'(^patno$|subject|participant_id|^id$|infodt|dob|date)', re.I)
 DESC = {
  'region':'Amygdala region (whole amygdala, subregion or nucleus)','sector':'Amygdala subregion','col':'Internal column name of the region',
