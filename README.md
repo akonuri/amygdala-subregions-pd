@@ -25,6 +25,7 @@ The code takes harmonised FreeSurfer amygdala nucleus volumes and clinical data 
 | `analysis/12_export_workbook.py` | All result tables in one Excel workbook |
 | `analysis/13_export_figure_source_data.py` | Group-level source data for Figures 1 to 3 (Zenodo data record) |
 | `analysis/14_survival_age_sex_adjusted.py` | Cox models for incident VH and CI adjusted for age and sex (sensitivity analysis) |
+| `analysis/15_survival_mood_anxiety.py` | Cox models for incident depression (GDS) and anxiety (STAI), exploratory |
 | `run_analysis.py` | Runs the steps in order |
 | `KeyResourcesTable.csv` | ASAP Key Resources Table |
 | `zenodo/` | Builds the Zenodo source data deposit from a full run |
