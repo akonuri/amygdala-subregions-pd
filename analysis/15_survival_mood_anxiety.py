@@ -1,42 +1,73 @@
-"""Exploratory analysis: incident depression (GDS-15 >=5) and anxiety (STAI state+trait >=54), Cox models with delayed entry, unadjusted and adjusted for age and sex."""
+"""Exploratory analysis: incident depression (GDS-15 >=5) and anxiety (STAI-State >=40), scored from the PPMI item-level files at every clinical visit. Cox models with delayed entry, unadjusted and adjusted for age and sex."""
+import glob as _glob15
 
-def _find_col_15(df_, cands):
-    for c in cands:
-        if c in df_.columns: return c
-    return None
+def _find_file_15(pattern):
+    hits = sorted(_glob15.glob(f'{BASE_DIR}/PPMI_Clinical_13Apr2026/**/{pattern}', recursive=True))
+    return hits[0] if hits else None
 
-_GDS_C, _STAI_T, _STAI_S, _STAI_TR = ['GDS_total', 'GDSTOT', 'GDS_TOTAL'], ['STAI_total', 'STAITOT', 'STAI_TOTAL'], ['STAI_state', 'STAI_STATE'], ['STAI_trait', 'STAI_TRAIT']
-_base_15 = _merged_dx_fu[['PATNO', 'EVENT_ID', 'Visit', 'years_from_diagnosis']].copy()
+def _read_15(path):
+    d = safe_read_csv(path, low_memory=False)
+    d.columns = [c.replace('-', '_') for c in d.columns]
+    d['PATNO'] = d['PATNO'].astype(str)
+    return d
+
+_GDS_POS = ['GDSSATIS', 'GDSGSPIR', 'GDSHAPPY', 'GDSALIVE', 'GDSENRGY']
+_GDS_NEG = ['GDSDROPD', 'GDSEMPTY', 'GDSBORED', 'GDSAFRAD', 'GDSHLPLS', 'GDSHOME', 'GDSMEMRY', 'GDSWRTLS', 'GDSHOPLS', 'GDSBETER']
+
+def _score_gds_15(d):
+    items = [c for c in _GDS_POS + _GDS_NEG if c in d.columns]
+    if len(items) < 15: return None
+    x = d[items].apply(pd.to_numeric, errors='coerce').where(lambda v: v.isin([0, 1]))
+    pts = pd.concat([1 - x[_GDS_POS], x[_GDS_NEG]], axis=1)
+    n_ans = pts.notna().sum(axis=1)
+    return (pts.sum(axis=1) * 15 / n_ans).where(n_ans >= 12)
+
+_STAI_REV = [1, 2, 5, 8, 10, 11, 15, 16, 19, 20]
+
+def _score_stai_state_15(d):
+    items = [f'STAIAD{i}' for i in range(1, 21)]
+    if not all(c in d.columns for c in items): return None
+    x = d[items].apply(pd.to_numeric, errors='coerce').where(lambda v: v.isin([1, 2, 3, 4]))
+    for i in _STAI_REV: x[f'STAIAD{i}'] = 5 - x[f'STAIAD{i}']
+    n_ans = x.notna().sum(axis=1)
+    return (x.sum(axis=1) * 20 / n_ans).where(n_ans >= 18)
+
+_scores_15 = {}
+_f_gds = _find_file_15('Geriatric_Depression_Scale*.csv')
+_f_stai = _find_file_15('State*Trait_Anxiety*.csv')
+print(f"GDS file: {_f_gds}\nSTAI file: {_f_stai}")
+if _f_gds:
+    _g = _read_15(_f_gds); _gs = _score_gds_15(_g)
+    if _gs is not None and _gs.notna().any():
+        _g['GDS15'] = _gs
+        _scores_15['GDS15'] = _g[['PATNO', 'EVENT_ID', 'GDS15']].dropna().drop_duplicates(['PATNO', 'EVENT_ID'])
+        print(f"  GDS-15 scored: {len(_scores_15['GDS15'])} visits, {_scores_15['GDS15']['PATNO'].nunique()} participants")
+    else: print(f"  GDS items not found. Columns: {list(_g.columns)[:40]}")
+if _f_stai:
+    _st = _read_15(_f_stai); _sc = _score_stai_state_15(_st)
+    if _sc is not None and _sc.notna().any():
+        _st['STAI_S'] = _sc
+        _scores_15['STAI_S'] = _st[['PATNO', 'EVENT_ID', 'STAI_S']].dropna().drop_duplicates(['PATNO', 'EVENT_ID'])
+        print(f"  STAI-State scored: {len(_scores_15['STAI_S'])} visits, {_scores_15['STAI_S']['PATNO'].nunique()} participants")
+    else: print(f"  STAI items not found. Columns: {list(_st.columns)[:40]}")
+
+_base_15 = _merged_dx_fu[['PATNO', 'EVENT_ID', 'years_from_diagnosis']].copy()
 _base_15['PATNO'] = _base_15['PATNO'].astype(str)
+_mood_dx_15 = _base_15
+for _k, _v in _scores_15.items():
+    _mood_dx_15 = _mood_dx_15.merge(_v, on=['PATNO', 'EVENT_ID'], how='left')
 
-def _source_15():
-    for name, src, keys in [('PPMI_mega_clinical', mega, ['PATNO', 'EVENT_ID']), ('PPMI_volumes_clinical', vol, ['PATNO', 'Visit'])]:
-        g = _find_col_15(src, _GDS_C); st = _find_col_15(src, _STAI_T)
-        ss = _find_col_15(src, _STAI_S); sr = _find_col_15(src, _STAI_TR)
-        if g or st or (ss and sr):
-            cols = [c for c in [g, st, ss, sr] if c]
-            d = src[keys + cols].copy(); d['PATNO'] = d['PATNO'].astype(str)
-            for c in cols: d[c] = pd.to_numeric(d[c], errors='coerce')
-            d = d.groupby(keys, as_index=False).first()
-            print(f"Mood/anxiety source: {name} | GDS={g} STAI_total={st} STAI_state={ss} STAI_trait={sr}")
-            return _base_15.merge(d, on=keys, how='left'), g, st, ss, sr
-    return None, None, None, None, None
-
-_mood_dx_15, _c_gds, _c_stai, _c_stais, _c_stait = _source_15()
-
-def _spec_15(col, thr, total=None):
+def _spec_15(col, thr):
     def f():
         d = _mood_dx_15[['PATNO', 'years_from_diagnosis']].copy()
-        v = (_mood_dx_15[total[0]] + _mood_dx_15[total[1]]) if total else _mood_dx_15[col]
+        v = _mood_dx_15[col]
         d['pos'] = np.where(v.notna(), (v >= thr).astype(float), np.nan)
         return d
     return f
 
 _defs_15 = []
-if _mood_dx_15 is not None:
-    if _c_gds: _defs_15.append(('DEP_GDS5', 'Depression, GDS-15 >=5', _spec_15(_c_gds, 5)))
-    if _c_stai: _defs_15.append(('ANX_STAI54', 'Anxiety, STAI total >=54', _spec_15(_c_stai, 54)))
-    elif _c_stais and _c_stait: _defs_15.append(('ANX_STAI54', 'Anxiety, STAI state+trait >=54', _spec_15(None, 54, total=(_c_stais, _c_stait))))
+if 'GDS15' in _scores_15: _defs_15.append(('DEP_GDS5', 'Depression, GDS-15 >=5', _spec_15('GDS15', 5)))
+if 'STAI_S' in _scores_15: _defs_15.append(('ANX_STAIS40', 'Anxiety, STAI-State >=40', _spec_15('STAI_S', 40)))
 
 _res_15 = []
 for _lab, _desc, _fn in _defs_15:
@@ -79,4 +110,4 @@ if _res_15:
             _out15.to_excel(_w, sheet_name='Survival_Mood_Anxiety', index=False)
     print("\nSaved: survival_mood_anxiety.csv")
 else:
-    print("GDS or STAI not found in the clinical files, or too few events; nothing run.")
+    print("No scorable GDS or STAI data found, or too few events; nothing run.")

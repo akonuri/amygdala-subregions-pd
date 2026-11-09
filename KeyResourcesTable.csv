@@ -1,7 +1,16 @@
-Resource Type,Resource Name,Source,Identifier
-Dataset,"Parkinson's Progression Markers Initiative (PPMI) clinical and T1-weighted MRI data (controlled access under the PPMI Data Use Agreement)",PPMI,https://www.ppmi-info.org/ (RRID:SCR_006431)
-Code,"Analysis scripts (quality control and covariate adjustment; cross-sectional, longitudinal mixed-effects and survival analyses; figure generation); includes README",GitHub,https://github.com/akonuri/amygdala-subregions-pd
-Software,"FreeSurfer v7.3.2 (recon-all and hippocampal and amygdala nuclei segmentation)",Athinoula A. Martinos Center for Biomedical Imaging,http://surfer.nmr.mgh.harvard.edu/
-Software,longCombat v1.0,Beer et al. 2020,https://doi.org/10.1016/j.neuroimage.2020.117129
-Software,R v4.6.1,R Foundation for Statistical Computing,https://www.r-project.org/
-Software,Python v3.14.7,Python Software Foundation,https://www.python.org/
+Resource Type,Resource Name,Source,Identifier,New/Reuse,Additional Information
+Dataset,"Parkinson's Progression Markers Initiative (PPMI) clinical and T1-weighted MRI data",PPMI,RRID:SCR_006431,Reuse,"Downloaded June 2026 from https://www.ppmi-info.org; controlled access under the PPMI Data Use Agreement"
+Dataset,"Derived source data (group-level summary statistics underlying all figures and tables)",This paper,https://doi.org/10.5281/zenodo.23787965,New,"De-identified group-level data; individual-level data available through PPMI"
+Code,"Analysis code (quality control, covariate adjustment, cross-sectional, longitudinal mixed-effects and survival analyses, figures)",This paper,https://github.com/akonuri/amygdala-subregions-pd,New,"Release v1.0.0 archived on Zenodo; MIT licence; includes README"
+Software,FreeSurfer v7.3.2,Athinoula A. Martinos Center for Biomedical Imaging,RRID:SCR_001847,Reuse,"recon-all and hippocampal and amygdala nuclei segmentation (segmentHA_T1)"
+Software,longCombat v1.0,Beer et al. 2020,https://github.com/jcbeer/longCombat,Reuse,"Longitudinal harmonisation across scanner manufacturers; doi:10.1016/j.neuroimage.2020.117129"
+Software,R v4.6.1,R Foundation for Statistical Computing,RRID:SCR_001905,Reuse,
+Software,Python v3.14.7,Python Software Foundation,RRID:SCR_008394,Reuse,
+Software,pandas v2.3.3,pandas development team,RRID:SCR_018214,Reuse,
+Software,NumPy v2.5.2,NumPy developers,RRID:SCR_008633,Reuse,
+Software,SciPy v1.18.1,SciPy developers,RRID:SCR_008058,Reuse,
+Software,statsmodels v0.15.0,statsmodels developers,RRID:SCR_016074,Reuse,"Linear mixed-effects models, logistic regression, FDR correction"
+Software,lifelines v0.30.3,Davidson-Pilon 2019,https://doi.org/10.21105/joss.01317,Reuse,"Cox proportional hazards and Kaplan-Meier analyses"
+Software,scikit-learn v1.9.0,scikit-learn developers,RRID:SCR_002577,Reuse,"Principal component analysis for outlier detection"
+Software,scikit-posthocs v0.16.1,Terpilowski 2019,https://doi.org/10.21105/joss.01169,Reuse,"Conover post-hoc tests"
+Software,matplotlib v3.11.1,matplotlib development team,RRID:SCR_008624,Reuse,Figures
